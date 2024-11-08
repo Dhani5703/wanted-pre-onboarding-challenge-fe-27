@@ -27,6 +27,7 @@ const SignUp = () => {
         navigate('/login');
         console.log(response);
       } catch (error) {
+        console.error(error)
         setError('회원가입에 실패했습니다.');
         
       }

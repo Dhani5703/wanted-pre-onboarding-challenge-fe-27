@@ -92,9 +92,11 @@ const Login: React.FC = () => {
         });
 
         if (response) {
-          const data = await response.data();
+          const data = await response.data;
           localStorage.setItem('token', data.token); // 토큰 저장
-          navigate('/'); // 루트 경로로 이동
+          console.log(response);
+          alert('로그인 성공 TODO앱에 오신 걸 환엽합니다 :)')
+          navigate('/todo'); // 투두앱으로 이동
         } else {
           alert('로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.');
         }
