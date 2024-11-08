@@ -25,7 +25,8 @@ const SignUp = () => {
         const { token } = response.data;
         localStorage.setItem('token', token);
         navigate('/login');
-      } catch (err) {
+        console.log(response);
+      } catch (error) {
         setError('회원가입에 실패했습니다.');
         
       }
