@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
+import axios from 'axios';
 
 const LoginContainer = styled.div`
   display: flex;
@@ -81,12 +82,9 @@ const Login: React.FC = () => {
       if (isEmailValid && isPasswordValid) {
         try {
           // API 호출
-          const response = await fetch('https://yourapi.com/auth/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
+          const response = await axios.post('http://localhost:8080/users/login', { 
+            email: email, 
+            password: password 
           });
   
           // 응답 확인
@@ -110,7 +108,7 @@ const Login: React.FC = () => {
       <LoginContainer>
         <form onSubmit={handleLogin}>
           <InputGroup>
-            <label htmlFor="email">이메일</label>
+            <Label htmlFor="email">이메일</Label>
             <Input
               type="email"
               id="email"
@@ -121,7 +119,7 @@ const Login: React.FC = () => {
           {!isEmailValid && <Error>이메일 형식이 올바르지 않습니다.</Error>}
           
           <InputGroup>
-            <label htmlFor="password">비밀번호</label>
+            <Label htmlFor="password">비밀번호</Label>
             <Input
               type="password"
               id="password"
